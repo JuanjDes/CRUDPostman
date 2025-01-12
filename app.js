@@ -22,7 +22,7 @@ app.get('/usuarios', (req, res) => {
 
 // Leer usuario por nombre
 app.get('/usuarios/:nombre', (req, res) => {
-    const usuario = usuarios.find(u => u.nombre.toLowerCase() === req.params.nombre.toLowerCase());
+    const usuario = usuarios.find(user => user.nombre.toLowerCase() === req.params.nombre.toLowerCase());
     if (!usuario) {
         return res.status(404).json({ mensaje: 'Usuario no encontrado' });
     }
@@ -32,7 +32,7 @@ app.get('/usuarios/:nombre', (req, res) => {
 
 // Actualizar usuario por nombre. !! REVISAR PORQUE NO ACTUALIZA EL NOMBRE !!
 app.put('/usuarios/:nombre', (req, res) => {
-    const index = usuarios.findIndex(u => u.nombre.toLowerCase() === req.params.nombre.toLowerCase());
+    const index = usuarios.findIndex(user => user.nombre.toLowerCase() === req.params.nombre.toLowerCase());
     if (index === -1) {
         return res.status(404).json({ mensaje: 'Usuario no encontrado' });
     }
@@ -56,7 +56,7 @@ app.post('/usuarios', (req, res) => {
 
 // Eliminar usuario por nombre
 app.delete('/usuarios/:nombre', (req, res) => {
-    const usuariosFiltrados = usuarios.filter(u => u.nombre.toLowerCase() !== req.params.nombre.toLowerCase());
+    const usuariosFiltrados = usuarios.filter(user => user.nombre.toLowerCase() !== req.params.nombre.toLowerCase());
     if (usuarios.length === usuariosFiltrados.length) {
         return res.status(404).json({ mensaje: 'Usuario no encontrado' });
     }
